@@ -15,7 +15,9 @@ document.addEventListener("OpenResidentRequestPopup",()=>{
       <p class="popup__title">Заполните заявку, чтобы стать резидентом</p>
     </div>
     <div class="popup__content">
-      <TextInput />
+      <TextInput
+        :label="'Наименование организации / ИП'"
+      />
     </div>
   </div>
 </template>
