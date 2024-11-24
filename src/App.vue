@@ -1,13 +1,11 @@
 <script setup>
-import ResidentRequestPopup from './components/ResidentRequestPopup.vue'
+import ResidentRequestPopup from './components/ResidentRequestPopup.vue';
+import IntroSection from './components/IntroSection.vue';
+import Overlay from "./components/Overlay.vue";
 </script>
 
 <template>
-  <main>
-
-  </main>
+  <IntroSection />
+  <Overlay />
+  <ResidentRequestPopup />
 </template>
-
-<style scoped>
-
-</style>
