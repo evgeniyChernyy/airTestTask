@@ -9,10 +9,10 @@ const placeTypeOptions = [{
   value:'productionSquare'
 },{
   label:'Складское помещение',
-  value:'productionSquare'
+  value:'warehouse'
 },{
   label:'Торговое место',
-  value:'productionSquare'
+  value:'tradingSquare'
 }]
 
 document.addEventListener("OpenResidentRequestPopup",()=>{

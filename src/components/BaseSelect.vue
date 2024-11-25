@@ -1,14 +1,18 @@
 <script setup>
-  import { ref } from 'vue'
+  import { ref, watch } from 'vue'
 
-  defineProps({
+  const props = defineProps({
     label: String,
     inputName: String,
-    options:Array
+    options:Array,
+    multiple:{
+      type:Boolean,
+      default:false
+    }
   })
 
   const listOpened = ref(false);
-  const checkedValue = ref("");
+  const checkedValue = ref(props.multiple ? [] : "");
   const checkedLabel = ref("");
   const inputContainer = ref(null)
 
@@ -19,6 +23,16 @@
     listOpened.value = false
     checkedLabel.value = option.label
     checkedValue.value = option.value
+  }
+
+  if(props.multiple) {
+    watch(checkedValue,async () => {
+        if(checkedValue.value.length) {
+          checkedLabel.value = "Выбрано - " + checkedValue.value.length
+        } else {
+          checkedLabel.value = ""
+        }
+    })
   }
 
   document.addEventListener("click",(ev)=>{
@@ -36,10 +50,25 @@
       </svg>
     </div>
     <div class="input__options-list">
-      <label class="input__list-option interactive" @click="checkOption(option)" v-for="option in options">
-        <input type="radio" :value="option.value" class="input__list-option-radio" :name="inputName">
-        <span class="input__list-option-label">{{ option.label }}</span>
-      </label>
+      <template v-if="multiple">
+        <label class="input__list-option interactive" v-for="option in options">
+          <input type="checkbox"
+                 v-model="checkedValue"
+                 :value="option.value"
+                 :name="inputName+'[]'"
+                 class="input__list-option-radio" >
+          <span class="input__list-option-label">{{ option.label }}</span>
+        </label>
+      </template>
+      <template v-else>
+        <label class="input__list-option interactive" @click="checkOption(option)" v-for="option in options">
+          <input type="radio"
+                 :value="option.value"
+                 :name="inputName"
+                 class="input__list-option-radio">
+          <span class="input__list-option-label">{{ option.label }}</span>
+        </label>
+      </template>
     </div>
   </div>
 </template>
