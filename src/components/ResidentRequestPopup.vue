@@ -33,6 +33,7 @@ document.addEventListener("OpenResidentRequestPopup",()=>{
       <TextInput
         :label="'Контактный телефон'"
         :name="'contactPhone'"
+        :mask="'+7 (###) ###-##-##'"
       />
       <BaseSelect
         :label="'Тип помещения'"

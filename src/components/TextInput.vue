@@ -1,9 +1,14 @@
 <script setup>
   import { ref } from 'vue'
+  import { vMaska } from "maska/vue"
 
   defineProps({
     label: String,
     inputName: String,
+    mask: {
+      type:String,
+      default:""
+    },
   })
 
   const text = ref("")
@@ -25,6 +30,7 @@
             class="input__input-field"
             type="text"
             :name="inputName"
+            v-maska="mask"
              v-model="text"
              @focus="focusHandler"
              @blur="blurHandler"
