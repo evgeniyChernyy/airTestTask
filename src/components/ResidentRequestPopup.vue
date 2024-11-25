@@ -40,6 +40,10 @@ document.addEventListener("OpenResidentRequestPopup",()=>{
         :inputName="'placeType'"
         :options="placeTypeOptions"
       />
+      <TextInput
+        :label="'Адрес'"
+        :name="'address'"
+      />
     </div>
   </div>
 </template>
