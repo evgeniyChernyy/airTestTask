@@ -10,6 +10,7 @@
   const listOpened = ref(false);
   const checkedValue = ref("");
   const checkedLabel = ref("");
+  const inputContainer = ref(null)
 
   function toggleList() {
     listOpened.value = !listOpened.value
@@ -19,10 +20,14 @@
     checkedLabel.value = option.label
     checkedValue.value = option.value
   }
+
+  document.addEventListener("click",(ev)=>{
+    if(!inputContainer.value.contains(ev.target)) listOpened.value = false
+  })
 </script>
 
 <template>
-  <div class="input" :class="{list_opened:listOpened,has_value:checkedLabel}">
+  <div class="input" :class="{list_opened:listOpened,has_value:checkedLabel}" ref="inputContainer">
     <div class="input__wrapper interactive" @click="toggleList">
       <span class="input__label">{{ label }}</span>
       <span class="input__value">{{ checkedLabel }}</span>
