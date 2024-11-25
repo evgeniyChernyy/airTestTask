@@ -1,8 +1,19 @@
 <script setup>
 import TextInput from './TextInput.vue';
+import BaseSelect from './BaseSelect.vue';
 import { ref } from 'vue'
 
 const opened = ref(false)
+const placeTypeOptions = [{
+  label:'Производственная площадь',
+  value:'productionSquare'
+},{
+  label:'Складское помещение',
+  value:'productionSquare'
+},{
+  label:'Торговое место',
+  value:'productionSquare'
+}]
 
 document.addEventListener("OpenResidentRequestPopup",()=>{
   opened.value = true
@@ -17,6 +28,16 @@ document.addEventListener("OpenResidentRequestPopup",()=>{
     <div class="popup__content">
       <TextInput
         :label="'Наименование организации / ИП'"
+        :name="'companyName'"
+      />
+      <TextInput
+        :label="'Контактный телефон'"
+        :name="'contactPhone'"
+      />
+      <BaseSelect
+        :label="'Тип помещения'"
+        :inputName="'placeType'"
+        :options="placeTypeOptions"
       />
     </div>
   </div>

@@ -3,6 +3,7 @@
 
   defineProps({
     label: String,
+    inputName: String,
   })
 
   const text = ref("")
@@ -23,6 +24,7 @@
       <input
             class="input__input-field"
             type="text"
+            :name="inputName"
              v-model="text"
              @focus="focusHandler"
              @blur="blurHandler"
