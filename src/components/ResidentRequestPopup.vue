@@ -1,6 +1,7 @@
 <script setup>
 import TextInput from './TextInput.vue';
 import BaseSelect from './BaseSelect.vue';
+import BaseRange from './BaseRange.vue';
 import { ref } from 'vue'
 
 const opened = ref(false)
@@ -44,6 +45,19 @@ document.addEventListener("OpenResidentRequestPopup",()=>{
         :label="'Адрес'"
         :name="'address'"
       />
+      <BaseRange
+        :label="'Площадь помещения (м²)'"
+        :inputName="'square'"
+        :type="'number'"
+      />
+      <BaseRange
+        :label="'Дата начала аренды'"
+        :inputName="'rentDate'"
+        :type="'date'"
+      />
+    </div>
+    <div class="popup__footer">
+      <button class="btn">Отправить</button>
     </div>
   </div>
 </template>
