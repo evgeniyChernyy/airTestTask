@@ -6,7 +6,7 @@ function openResidentRequestPopup() {
 </script>
 
 <template>
-  <section class="section">
+  <section class="section intro_section">
     <div class="container">
       <button class="btn" @click="openResidentRequestPopup">Стать резидентом</button>
     </div>
